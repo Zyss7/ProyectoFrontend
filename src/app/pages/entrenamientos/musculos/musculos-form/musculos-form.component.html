@@ -1,0 +1,44 @@
+<div class="container bg-light my-5 bg-warning">
+  <div class="text-center">
+    <h1 class="display-4 mt-3">MUSCULO</h1>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form class="my-5" #formMusculo="ngForm">
+        <div class="form-group">
+          <LabelRequired [label]="'Nombre'"></LabelRequired>
+          <input
+            class="form-control w-100"
+            type="text"
+            name="nombre"
+            [(ngModel)]="musculo.nombre"
+            required
+            minlength="3"
+          />
+        </div>
+
+        <div class="form-row justify-content-center my-5">
+          <div class="col-md-4">
+            <button
+              class="btn btn-danger btn-block"
+              routerLink="/musculos-list"
+            >
+              Cancelar
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <button
+              class="btn btn-success btn-block"
+              (click)="guardar()"
+              [disabled]="!formMusculo.form.valid"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

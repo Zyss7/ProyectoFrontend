@@ -1,0 +1,22 @@
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.w-30px {
+    width: 30px;
+}
+
+.w-60px {
+    width: 60px;
+}
+
+.trunc-text-table {
+    overflow: hidden;
+    text-overflow: ellipsis
+}

@@ -1,0 +1,51 @@
+<div class="container bg-light my-5 bg-warning">
+  <div class="text-center">
+    <h1 class="display-4 mt-3">ETAPA</h1>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form class="my-5" #etapaForm="ngForm">
+        <div class="form-group">
+          <LabelRequired [label]="'Nombre'"></LabelRequired>
+          <input
+            class="w-100 form-control"
+            type="text"
+            name="nombre"
+            [(ngModel)]="etapa.nombre"
+            required
+            minlength="3"
+            #nombre="ngModel"
+          />
+        </div>
+        <div
+          [hidden]="nombre.valid || nombre.pristine"
+          class="is-invalid invalid-feedback"
+        >
+          El nombre es requerido
+        </div>
+
+        <div class="form-row justify-content-center my-5">
+          <div class="col-md-4">
+            <button
+              class="btn btn-info btn-block"
+              [routerLink]="['/etapas-list']"
+            >
+              Cancelar
+            </button>
+          </div>
+
+          <div class="col-md-4">
+            <button
+              class="btn btn-success btn-block"
+              (click)="guardar()"
+              [disabled]="!etapaForm.form.valid"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

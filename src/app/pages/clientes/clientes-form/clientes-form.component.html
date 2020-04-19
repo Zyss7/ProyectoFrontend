@@ -1,0 +1,67 @@
+<div class="container bg-light my-5">
+    <div class="row justify-content-center border border-dark">
+        <div class="col-12">
+            <h1>FORMULARIO DE REGISTRO PARA CLIENTES</h1>
+            <form class="my-5" #form="ngForm">
+                <div class=" form-row justify-content-center">
+                    <div class="form-group col-lg-7">
+                        <label>Identificación* :</label>
+                        <input class="w-100" type="text" name="identificacion"
+                            [(ngModel)]="cliente.usuario.identificacion">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Primer Nombre* :</label>
+                        <input class="w-100" type="text" name="primer_nombre"
+                            [(ngModel)]="cliente.usuario.primerNombre">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Segundo Nombre* :</label>
+                        <input class="w-100" type="text" name="segundo_nombre"
+                            [(ngModel)]="cliente.usuario.segundoNombre">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Primer Apellido* :</label>
+                        <input class="w-100 form-control" type="text" name="primer_apellido"
+                            [(ngModel)]="cliente.usuario.primerApellido">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Segundo Apellido* :</label>
+                        <input class="w-100" type="text" name="segundo_apellido"
+                            [(ngModel)]="cliente.usuario.segundoApellido">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Fecha de Nacimiento* :</label>
+                        <input class="w-100" type="date">
+                    </div>
+                    <div class="form-check col-lg-6">
+                        <label>Género* :</label>
+                        <select class="form-control" id="genero" name="genero" [(ngModel)]="cliente.usuario.genero">
+                            <option>Masculino</option>
+                            <option>Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Peso* :</label>
+                        <input class="w-100" type="text" name="peso" [(ngModel)]="cliente.peso">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>Altura* :</label>
+                        <input class="w-100" type="text" name="altura" [(ngModel)]="cliente.altura">
+                    </div>
+
+                </div>
+
+                <div class="form-row justify-content-center my-5">
+                    <div class="col-md-4">
+                        <button class="btn btn-success btn-block " (click)="guardar()">Guardar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-danger btn-block">Cancelar</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

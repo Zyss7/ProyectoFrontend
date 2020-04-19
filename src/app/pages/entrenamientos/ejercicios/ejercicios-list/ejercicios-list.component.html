@@ -1,0 +1,111 @@
+<div
+  class="container bg-light my-5 rounded"
+  *ngIf="!loading.show; else loadingTemplate"
+>
+  <TituloLista
+    [titulo]="'Listado de Ejercicios'"
+    [routerLinkAdd]="'ejercicios-form'"
+  >
+  </TituloLista>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <TableLayout>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" style="width: 50px;">#</th>
+            <th scope="col">Ejercicio</th>
+            <th scope="col">Etapas</th>
+            <th scope="col">Musculos</th>
+            <th scope="col" style="width: 110px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ejercicio of ejercicios; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ ejercicio.nombre }}</td>
+            <td class="trunc-text-table">
+              {{ ejercicio.etapasArray | array }}
+            </td>
+            <td class="trunc-text-table">
+              {{ ejercicio.musculosArray | array }}
+            </td>
+            <TableActions
+              [routerLinkEdit]="'ejercicios-form/edit/'"
+              [pkParam]="'id'"
+              [value]="ejercicio"
+              [callback]="setModal(ejercicio)"
+              [modalTarget]="'modal'"
+            ></TableActions>
+          </tr>
+        </tbody>
+      </TableLayout>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmacion</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h6>Esta seguro de eliminar el siguiente Ejercicio?</h6>
+          <p>{{ ejercicioSeleccionado.nombre }}</p>
+          <div class="text-left">
+            <h6>Musculos:</h6>
+            <ul>
+              <li *ngFor="let musculo of ejercicioSeleccionado.musculosArray">
+                {{ musculo.nombre }}
+              </li>
+            </ul>
+            <h6>Etapas:</h6>
+            <ul>
+              <li *ngFor="let etapa of ejercicioSeleccionado.etapasArray">
+                {{ etapa.nombre }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary"
+          data-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-dismiss="modal"
+          (click)="eliminar()"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <app-loading [config]="loading"></app-loading>
+</ng-template>

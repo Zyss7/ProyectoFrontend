@@ -1,0 +1,29 @@
+<div class="container bg-light my-5">
+    <div class="row justify-content-center border border-dark">
+        <div class="col">
+            <h1>Listado de Entrenadores <i class="fas fa-plus-circle"></i>
+            </h1>
+            <table class="table">
+                <thead class="thead-dark justify-content-center">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Identificacion</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="justify-content-center">
+                    <tr *ngFor="let entrenador of entrenadores; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{entrenador.usuario.identificacion}}</td>
+                        <td>{{entrenador.usuario.primerApellido}}</td>
+                        <td>
+                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-trash-alt"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

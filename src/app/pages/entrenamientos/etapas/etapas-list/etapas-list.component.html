@@ -1,0 +1,81 @@
+<div class="container bg-light my-5 rounded">
+  <TituloLista
+    [titulo]="'Listado de Etapas'"
+    [routerLinkAdd]="'etapas-form'"
+  ></TituloLista>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <TableLayout>
+        <thead class="thead-dark justify-content-center">
+          <tr>
+            <th scope="col" style="width: 50px;">#</th>
+            <th scope="col">Etapa</th>
+            <th scope="col" style="width: 110px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="justify-content-center">
+          <tr *ngFor="let etapa of etapas; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ etapa.nombre }}</td>
+            <TableActions
+              [routerLinkEdit]="'etapas-form/edit/'"
+              [pkParam]="'id'"
+              [value]="etapa"
+              [callback]="setModal(etapa)"
+              [modalTarget]="'modalEtapas'"
+            ></TableActions>
+          </tr>
+        </tbody>
+      </TableLayout>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="modalEtapas"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmacion</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h6>Esta seguro de eliminar la siguiente etapa?</h6>
+          <p>{{ etapaSeleccionada.nombre }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary"
+          data-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-dismiss="modal"
+          (click)="eliminarEtapa()"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

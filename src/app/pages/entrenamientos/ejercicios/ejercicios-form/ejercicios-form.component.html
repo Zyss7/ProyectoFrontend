@@ -1,0 +1,124 @@
+<div
+  class="container bg-light my-5 rounded"
+  *ngIf="!loading.show; else loadingTemplate"
+>
+  <h1 class="text-center display-4">Ejercicio</h1>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <form class="my-5" #myForm="ngForm">
+        <div class="form-group">
+          <LabelRequired [label]="'Nombre'"></LabelRequired>
+          <input
+            class="form-control"
+            type="text"
+            name="nombre"
+            required
+            minlength="3"
+            [(ngModel)]="ejercicio.nombre"
+          />
+        </div>
+        <div class="form-group">
+          <LabelRequired [label]="'Tipo'"></LabelRequired>
+
+          <select
+            class="form-control"
+            name="tipo"
+            id=""
+            [(ngModel)]="ejercicio.tipo"
+          >
+            <option value="CARDIO">CARDIO</option>
+            <option value="PESAS">PESAS</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <LabelRequired
+            [label]="
+              'Seleccione que musculos con los que trabaja este ejericio'
+            "
+          >
+          </LabelRequired>
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <TableLayout>
+              <thead class="thead-dark">
+                <tr>
+                  <th class="w-60px">#</th>
+                  <th>Musculo</th>
+                  <th class="w-30px">Check</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let musculo of musculosList; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ musculo.nombre }}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      [(ngModel)]="musculo.checked"
+                      [name]="musculo.nombre"
+                      (change)="check(musculosList, musculo)"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </TableLayout>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <LabelRequired
+            [label]="
+              'Seleccione en que etapas se puede trabajar este ejercicio'
+            "
+          >
+          </LabelRequired>
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <TableLayout>
+              <thead class="thead-dark">
+                <tr>
+                  <th class="w-60px">#</th>
+                  <th>Etapa</th>
+                  <th class="w-30px">Check</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let etapa of etapasList; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ etapa.nombre }}</td>
+                  <td>
+                    <input
+                      type="checkbox"
+                      [(ngModel)]="etapa.checked"
+                      [name]="etapa.nombre"
+                      (change)="check(etapasList, etapa)"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </TableLayout>
+          </div>
+        </div>
+
+        <div class="form-row justify-content-around">
+          <div class="col-4">
+            <button
+              class="btn btn-info btn-block"
+              routerLink="/ejercicios-list"
+            >
+              Cancelar
+            </button>
+          </div>
+          <div class="col-4">
+            <button class="btn btn-success btn-block" (click)="guardar()">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #loadingTemplate>
+  <app-loading [config]="loading"></app-loading>
+</ng-template>

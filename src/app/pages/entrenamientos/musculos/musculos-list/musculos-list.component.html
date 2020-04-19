@@ -1,0 +1,81 @@
+<div class="container bg-light my-5 rounded">
+  <TituloLista
+    [titulo]="'Listado de Musculos'"
+    [routerLinkAdd]="'musculos-form'"
+  ></TituloLista>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <TableLayout>
+        <thead class="thead-dark justify-content-center">
+          <tr>
+            <th scope="col" style="width: 40px;">#</th>
+            <th scope="col" (click)="sort()" style="cursor: pointer;">Etapa</th>
+            <th scope="col" style="width: 110px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="justify-content-center">
+          <tr *ngFor="let musculo of musculos; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ musculo.nombre }}</td>
+            <TableActions
+              [routerLinkEdit]="'musculos-form/edit/'"
+              [pkParam]="'id'"
+              [value]="musculo"
+              [callback]="setModal(musculo)"
+              [modalTarget]="'modalMusculo'"
+            ></TableActions>
+          </tr>
+        </tbody>
+      </TableLayout>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="modalMusculo"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmacion</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h6>Esta seguro de eliminar la siguiente etapa?</h6>
+          <p>{{ musculoSeleccionado.nombre }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary"
+          data-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          data-dismiss="modal"
+          (click)="eliminarMusculo()"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
