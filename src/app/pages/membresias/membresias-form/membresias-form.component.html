@@ -1,46 +1,91 @@
-<div class="container bg-light my-5">
-    <div class="row justify-content-center border border-dark">
-        <div class="col-12">
-            <h1>FORMULARIO DE CREACIÓN DE MEMBRESÍAS</h1>
-            <form class="my-5">
-                <div class=" form-row justify-content-center">
-                    <div class="form-group col-lg-6">
-                        <label>Nombre* :</label>
-                        <input class="w-100" type="text">
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label>Descripción* :</label>
-                        <input class="w-100" type="text">
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label>Duración* :</label>
-                        <input class="w-100" type="date">
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label for="">Unidad Duracion</label>
-                        <select class="form-control" name="" id="">
-                            <option>Hora/s</option>
-                            <option>Dia/s</option>
-                            <option>Mes/es</option>
-                            <option>Año/s</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label>Precio* :</label>
-                        <input class="w-100" type="text">
-                    </div>
-                </div>
+<div
+  class="container bg-light my-5 rounded"
+  *ngIf="!loading.show; else loadingTemplate"
+>
+  <h1>MEMBRESÍA</h1>
 
-                <div class="form-row justify-content-center my-5">
-                    <div class="col-md-4">
-                        <button class="btn btn-success btn-block ">Guardar</button>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-danger btn-block">Cancelar</button>
-                    </div>
-
-                </div>
-            </form>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <form class="my-5" #myForm="ngForm">
+        <div class="form-group">
+          <LabelRequired [label]="'Nombre'"></LabelRequired>
+          <input
+            class="form-control"
+            type="text"
+            name="nombre"
+            required
+            minlength="3"
+            [(ngModel)]="membresia.nombre"
+          />
         </div>
+        <div class="form-group">
+          <LabelRequired [label]="'Descripción'"></LabelRequired>
+          <input
+            class="form-control"
+            type="text"
+            name="descripcion"
+            required
+            minlength="3"
+            [(ngModel)]="membresia.descripcion"
+          />
+        </div>
+        <div class="form-group">
+          <LabelRequired [label]="'Duración'"></LabelRequired>
+          <input
+            class="form-control"
+            type="number"
+            name="duracion"
+            required
+            minlength="3"
+            [(ngModel)]="membresia.duracion"
+          />
+        </div>
+        <div class="form-group">
+          <LabelRequired [label]="'Tipo'"></LabelRequired>
+
+          <select
+            class="form-control"
+            name="tipo"
+            id=""
+            [(ngModel)]="membresia.tipoDuracion"
+          >
+            <option value="DÍA/S">DÍA/S</option>
+            <option value="SEMANA/S">SEMANA/S</option>
+            <option value="MES/ES">MES/ES</option>
+            <option value="AÑO">AÑO</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <LabelRequired [label]="'Precio'"></LabelRequired>
+          <input
+            class="form-control"
+            type="number"
+            name="precio"
+            required
+            minlength="3"
+            [(ngModel)]="membresia.precio"
+          />
+        </div>
+
+        <div class="form-row justify-content-around">
+          <div class="col-4">
+            <button
+              class="btn btn-info btn-block"
+              routerLink="/ejercicios-list"
+            >
+              Cancelar
+            </button>
+          </div>
+          <div class="col-4">
+            <button class="btn btn-success btn-block" (click)="guardar()">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
+  <ng-template #loadingTemplate>
+    <app-loading [config]="loading"></app-loading>
+  </ng-template>
 </div>

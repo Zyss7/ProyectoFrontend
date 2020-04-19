@@ -1,19 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <img
-    class=""
-    src="./assets/img/navs.png"
-    alt="SIN IMAGEN"
-    style="width: 30px;"
-  />
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarColor03"
-    aria-controls="navbarColor03"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <img class="" src="./assets/img/navs.png" alt="SIN IMAGEN" style="width: 30px;" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+    aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -23,62 +11,27 @@
         <a class="nav-link" [routerLink]="['/clientes-form']">Clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/entrenadores-form']"
-          >Entrenadores</a
-        >
+        <a class="nav-link" [routerLink]="['/entrenadores-form']">Entrenadores</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/membresias-form']">Membresias</a>
+        <a class="nav-link" [routerLink]="['/membresias-list']">Membresias</a>
       </li>
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          routerLinkActive="active"
-        >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
           Entrenamientos
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a
-            class="dropdown-item"
-            [routerLink]="['/etapas-list']"
-            routerLinkActive="active"
-            >Etapa</a
-          >
-          <a
-            class="dropdown-item"
-            [routerLink]="['/musculos-list']"
-            routerLinkActive="active"
-            >Músculo</a
-          >
-          <a
-            class="dropdown-item"
-            [routerLink]="['/ejercicios-list']"
-            routerLinkActive="active"
-            >Ejercicio</a
-          >
+          <a class="dropdown-item" [routerLink]="['/etapas-list']" routerLinkActive="active">Etapa</a>
+          <a class="dropdown-item" [routerLink]="['/musculos-list']" routerLinkActive="active">Músculo</a>
+          <a class="dropdown-item" [routerLink]="['/ejercicios-list']" routerLinkActive="active">Ejercicio</a>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          >Rutinas</a
-        >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Rutinas</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/rutinas-form']"
-            >Formulario de Creación</a
-          >
+          <a class="dropdown-item" [routerLink]="['/rutinas-form']">Formulario de Creación</a>
           <a class="dropdown-item" href="#">Tabla de Entrenamiento</a>
         </div>
       </li>

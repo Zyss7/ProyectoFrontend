@@ -1,34 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Cliente } from 'src/app/models/models';
-import { URL_API } from 'src/environments/CONS';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Cliente } from "src/app/models/models";
+import { URL_API } from "src/environments/CONS";
 
-const URL = `${URL_API}clientes/`
+const URL = `${URL_API}clientes/`;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ClientesService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-
-
-  public addCliente(cliente: Cliente) {
-    return this.http.post(URL, cliente);
+  public async post(clientes: Cliente): Promise<Cliente> {
+    return await this.http.post(URL, clientes).toPromise();
   }
 
-  public editCliente(id: number) {
-    return this.http.put(URL, id);
+  public async getAll(): Promise<Cliente[]> {
+    return await this.http.get<Cliente[]>(URL).toPromise();
   }
 
-  public getClienteById(id: number) {
-    return this.http.get(`${URL}${id}`)
+  public async getById(id: number): Promise<Cliente> {
+    return await this.http.get<Cliente>(`${URL}${id}/`).toPromise();
   }
 
-  public getAll() {
-    return this.http.get(URL)
+  public async putById(id: number, clientes: Cliente): Promise<Cliente> {
+    return await this.http.put<Cliente>(`${URL}${id}/`, clientes).toPromise();
   }
 
-
+  public async deleteById(id: number): Promise<Cliente> {
+    return await this.http.delete(`${URL}${id}/`).toPromise();
+  }
 }

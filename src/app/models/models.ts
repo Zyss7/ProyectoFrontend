@@ -58,6 +58,25 @@ export interface Ejercicios {
   tipo?: string;
 }
 
+export interface Membresia {
+  id?: number;
+  nombre?: string;
+  descripcion?: string;
+  extra?: string;
+  duracion?: number;
+  tipoDuracion?: string;
+  precio?: number;
+}
+
+export interface MembresiasCliente {
+  cliente?: Cliente;
+  membresia?: Membresia;
+  fecha_registro?: Date;
+  estado?: string;
+  Isanulada?: boolean;
+  fecha_anulacion?: Date;
+}
+
 export interface Loading {
   primario?: string;
   secundario?: string;

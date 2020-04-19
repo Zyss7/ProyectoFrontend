@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: "entrenadores-form", component: EntrenadoresFormComponent },
   { path: "entrenadores-list", component: EntrenadoresListComponent },
   { path: "membresias-form", component: MembresiasFormComponent },
+  { path: "membresias-form/edit/:id", component: MembresiasFormComponent },
   { path: "membresias-list", component: MembresiasListComponent },
   { path: "etapas-form", component: EtapasFormComponent },
   { path: "etapas-form/edit/:id", component: EtapasFormComponent },
@@ -39,4 +40,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
